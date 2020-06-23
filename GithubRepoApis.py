@@ -1,16 +1,13 @@
 import requests
-import os
-from urllib.parse import urljoin
-import constans
 from constans import Github
 
 class GitRepositoryApisDetails:
 
     def search_repository_details(self,repo_name):
 
-        self.target_url = "{BASE_URL}/{SEARCH}/{CODE}".format(BASE_URL=Github.BASE_URL.value,
+        self.target_url = "{BASE_URL}/{SEARCH}/{REPOSITORIES}".format(BASE_URL=Github.BASE_URL.value,
                                                               SEARCH=Github.SEARCH.value,
-                                                              CODE=Github.repositories.value)
+                                                              CODE=Github.REPOSITORIES.value)
         self.query_string = "?q={}".format(repo_name)
         self.query_url = "{}{}".format(self.target_url,self.query_string)
         headers = {'content-type': 'application/json'}
@@ -46,8 +43,6 @@ class GitRepositoryApisDetails:
 
             repo_details["forks"] = repo.get("forks")
             repo_details["watchers"] = repo.get("watchers")
-
-
             result.append(repo_details)
 
         return (result)

@@ -52,8 +52,4 @@ class GitRepositoryApisDetails:
 
         return (result)
 
-#find_repo = GitRepositoryApisDetails()
 
-#file_name=input("enter file name\n")
-#total_result = find_repo.search_repository_details(file_name)
-#print(total_result)

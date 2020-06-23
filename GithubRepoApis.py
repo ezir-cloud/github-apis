@@ -4,16 +4,15 @@ from urllib.parse import urljoin
 import constans
 from constans import Github
 
-Github.BASE_URL,Github.SEARCH,Github.CODE
 class GitRepositoryApisDetails:
 
     def search_repository_details(self,repo_name):
 
         self.target_url = "{BASE_URL}/{SEARCH}/{CODE}".format(BASE_URL=Github.BASE_URL.value,
                                                               SEARCH=Github.SEARCH.value,
-                                                              CODE=Github.CODE.value)
+                                                              CODE=Github.repositories.value)
         self.query_string = "?q={}".format(repo_name)
-        self.query_url = "{}{}".format(self.target_url , self.query_string)
+        self.query_url = "{}{}".format(self.target_url,self.query_string)
         headers = {'content-type': 'application/json'}
         self.response = requests.get(self.query_url, headers=headers)
         self.response.raise_for_status()
@@ -48,13 +47,13 @@ class GitRepositoryApisDetails:
             repo_details["forks"] = repo.get("forks")
             repo_details["watchers"] = repo.get("watchers")
 
-            print(repo_details)
+
             result.append(repo_details)
 
         return (result)
 
-find_repo = GitRepositoryApisDetails()
+#find_repo = GitRepositoryApisDetails()
 
-file_name=input("enter file name\n")
-total_result = find_repo.search_repository_details(file_name)
-print(total_result)
+#file_name=input("enter file name\n")
+#total_result = find_repo.search_repository_details(file_name)
+#print(total_result)

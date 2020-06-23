@@ -7,7 +7,7 @@ class GitRepositoryApisDetails:
 
         self.target_url = "{BASE_URL}/{SEARCH}/{REPOSITORIES}".format(BASE_URL=Github.BASE_URL.value,
                                                               SEARCH=Github.SEARCH.value,
-                                                              CODE=Github.REPOSITORIES.value)
+                                                              REPOSITORIES=Github.REPOSITORIES.value)
         self.query_string = "?q={}".format(repo_name)
         self.query_url = "{}{}".format(self.target_url,self.query_string)
         headers = {'content-type': 'application/json'}

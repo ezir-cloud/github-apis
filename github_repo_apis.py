@@ -8,7 +8,6 @@ ref=ed9c7f50cb619ebcca955e283e8ec66bc3d4cb39", "git_url":
 
 import requests
 import os
-import constans
 from constans import Github
 
 class GithubRepoApis:

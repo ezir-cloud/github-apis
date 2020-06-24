@@ -1,11 +1,3 @@
-"""display items are  name "name": "Dockerfile", "path": "radicale/Dockerfile",
-"url": "https://api.github.com/repositories/66067220/contents/radicale/Dockerfile?
-ref=ed9c7f50cb619ebcca955e283e8ec66bc3d4cb39", "git_url":
-"https://api.github.com/repositories/66067220/git/blobs/e7da19f10da60a2633fa8e82cd77c4760ee1afc1","html_url":
-"https://github.com/mritd/dockerfile/blob/ed9c7f50cb619ebcca955e283e8ec66bc3d4cb39/radicale/Dockerfile","owner": {
-"owner":"mritd","id": 13043245,"url": https://api.github.com/users/mritd", "html_url": "https://github.com/mritd"
-"""
-
 import requests
 import os
 from constans import Github

@@ -28,4 +28,8 @@ class GithubRepoApis:
             required_file_details["owner"]["url"] = file_details.get("repository").get("owner").get("url")
             required_file_details["owner"]["html_url"] = file_details.get("repository").get("owner").get("html_url")
             all_file_details.append(required_file_details)
+<<<<<<< HEAD:githubapis/github_repo_apis.py
         return all_file_details
+=======
+            return required_file_details
+>>>>>>> chnage base_url line class to  function:github_repo_apis.py

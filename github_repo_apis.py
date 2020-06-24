@@ -12,10 +12,9 @@ class GitRepositoryApisDetails:
         self.query_url = "{}{}".format(self.target_url,self.query_string)
         headers = {'content-type': 'application/json'}
         self.response = requests.get(self.query_url, headers=headers)
-        self.response.raise_for_status()
         self.matched_repositories = self.response.json()
 
-        result = []
+        all_repositories_details = []
         for repo in self.matched_repositories["items"]:
 
             repo_details = dict()
@@ -43,8 +42,8 @@ class GitRepositoryApisDetails:
 
             repo_details["forks"] = repo.get("forks")
             repo_details["watchers"] = repo.get("watchers")
-            result.append(repo_details)
+            all_repositories_details.append(repo_details)
 
-        return (result)
+        return (all_repositories_details)
 
 

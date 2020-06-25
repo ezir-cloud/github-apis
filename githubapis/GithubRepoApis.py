@@ -1,5 +1,6 @@
 import requests
-from constans import Github
+from githubapis.constants import Github
+
 
 class GitRepositoryApisDetails:
 
@@ -45,6 +46,6 @@ class GitRepositoryApisDetails:
             repo_details["watchers"] = repo.get("watchers")
             result.append(repo_details)
 
-        return (result)
+        return result
 
 

@@ -1,6 +1,2 @@
-def fun(number):
-    print("hello,wolrd 2!")
-    return(number)
+_version_ = "0.0.1"
 
-
-from githubapis import constants

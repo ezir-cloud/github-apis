@@ -1,15 +1,15 @@
 import requests
-import os
 from constans import Github
 
 class GithubRepoApis:
 
 
     def get_matched_files_in_repo_by_file_name(self,repo_name,file_name):
-
-        self.base_url = os.path.join(Github.BASE_URL.value, Github.SEARCH.value, Github.CODE.value)
+        self.target_url = "{BASE_URL}/{SEARCH}/{CODE}".format(BASE_URL=Github.BASE_URL.value,
+                                                              SEARCH=Github.SEARCH.value,
+                                                              CODE=Github.CODE.value)
         self.query_string ="?q=repo:{}+filename:{}".format(repo_name,file_name)
-        self.query_url = "{}{}".format(self.base_url, self.query_string)
+        self.query_url = "{}{}".format(self.target_url, self.query_string)
         headers = {'content-type': 'application/json'}
         self.response = requests.get(self.query_url, headers=headers)
         self.matched_files = self.response.json()  

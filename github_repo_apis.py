@@ -12,9 +12,9 @@ class GithubRepoApis:
         self.query_url = "{}{}".format(self.base_url, self.query_string)
         headers = {'content-type': 'application/json'}
         self.response = requests.get(self.query_url, headers=headers)
-        self.matched_files = self.response.json()  # access JSON content using json().
+        self.matched_files = self.response.json()  
+        
         all_file_details = []
-
         for file_details in self.matched_files["items"]:
             required_file_details = dict()
             required_file_details["name"] = file_details.get("name")
@@ -28,4 +28,4 @@ class GithubRepoApis:
             required_file_details["owner"]["url"] = file_details.get("repository").get("owner").get("url")
             required_file_details["owner"]["html_url"] = file_details.get("repository").get("owner").get("html_url")
             all_file_details.append(required_file_details)
-        return required_file_details
+        return all_file_details

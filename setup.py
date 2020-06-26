@@ -1,7 +1,8 @@
 from distutils.core import setup
-
 import setuptools
 from setuptools import setup
+
+
 setup(
     name = 'githubapis',
     version = '0.0.1',

@@ -1,6 +1,7 @@
 import requests
 from githubapis.constants import Github
 
+
 class GitRepositoryApisDetails:
 
     def search_repository_details(self,repo_name):
@@ -45,6 +46,7 @@ class GitRepositoryApisDetails:
             all_repositories_details.append(repo_details)
 
         return (all_repositories_details)
+
 
 class GithubRepoApis:
 

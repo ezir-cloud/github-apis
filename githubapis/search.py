@@ -17,7 +17,6 @@ class GitRepositoryApisDetails:
 
         all_repositories_details = []
         for repo in self.matched_repositories["items"]:
-
             repo_details = dict()
             repo_details["id"] = repo.get("id")
             repo_details["name"] = repo.get("name")
@@ -45,15 +44,16 @@ class GitRepositoryApisDetails:
             repo_details["watchers"] = repo.get("watchers")
             all_repositories_details.append(repo_details)
 
-        return (all_repositories_details)
+        return all_repositories_details
 
 
 class GithubRepoApis:
 
     def get_matched_files_in_repo_by_file_name(self, repo_name, file_name):
         self.target_url = "{BASE_URL}/{SEARCH}/{CODE}".format(BASE_URL=Github.BASE_URL.value,
-                                                                SEARCH=Github.SEARCH.value,
-                                                                CODE=Github.CODE.value)
+                                                              SEARCH=Github.SEARCH.value,
+                                                              CODE=Github.CODE.value)
+
         self.query_string = "?q=repo:{}+filename:{}".format(repo_name, file_name)
         self.query_url = "{}{}".format(self.target_url, self.query_string)
         headers = {'content-type': 'application/json'}
@@ -62,7 +62,6 @@ class GithubRepoApis:
 
         all_file_details = []
         for file_details in self.matched_files["items"]:
-
             required_file_details = dict()
             required_file_details["name"] = file_details.get("name")
             required_file_details["path"] = file_details.get("path")
@@ -74,7 +73,6 @@ class GithubRepoApis:
             required_file_details["owner"]["id"] = file_details.get("repository").get("owner").get("id")
             required_file_details["owner"]["url"] = file_details.get("repository").get("owner").get("url")
             required_file_details["owner"]["html_url"] = file_details.get("repository").get("owner").get("html_url")
-
             all_file_details.append(required_file_details)
 
         return all_file_details

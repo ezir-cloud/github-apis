@@ -19,7 +19,7 @@ class GitRepositoryApisDetails:
         for repo in self.matched_repositories["items"]:
             repo_details = dict()
             repo_details["id"] = repo.get("id")
-            repo_details["name"] = repo.get("name")
+            repo_details["repo_name"] = repo.get("name")
             repo_details["full_name"] = repo.get("full_name")
             repo_details["private"] = repo.get("private")
             repo_details["owner"] = dict()
@@ -63,7 +63,7 @@ class GithubRepoApis:
         all_file_details = []
         for file_details in self.matched_files["items"]:
             required_file_details = dict()
-            required_file_details["name"] = file_details.get("name")
+            required_file_details["file_name"] = file_details.get("name")
             required_file_details["path"] = file_details.get("path")
             required_file_details["url"] = file_details.get("url")
             required_file_details["git_url"] = file_details.get("git_url")

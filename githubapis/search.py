@@ -49,6 +49,7 @@ class GitRepositoryApisDetails:
 
 class GithubRepoApis:
 
+
     def get_matched_files_in_repo_by_file_name(self, repo_name, file_name):
         self.target_url = "{BASE_URL}/{SEARCH}/{CODE}".format(BASE_URL=Github.BASE_URL.value,
                                                               SEARCH=Github.SEARCH.value,
@@ -63,11 +64,9 @@ class GithubRepoApis:
         all_file_details = []
         for file_details in self.matched_files["items"]:
             required_file_details = dict()
-            required_file_details["file_name"] = file_details.get("name")
-            required_file_details["path"] = file_details.get("path")
-            required_file_details["url"] = file_details.get("url")
-            required_file_details["git_url"] = file_details.get("git_url")
-            required_file_details["html_url"] = file_details.get("html_url")
+            file_details_url = file_details.get("url")
+            file_info= self.show_file_content(file_details_url)
+            required_file_details.update(file_info)
             required_file_details["owner"] = dict()
             required_file_details["owner"]["login"] = file_details.get("repository").get("owner").get("login")
             required_file_details["owner"]["id"] = file_details.get("repository").get("owner").get("id")
@@ -76,3 +75,22 @@ class GithubRepoApis:
             all_file_details.append(required_file_details)
 
         return all_file_details
+
+    def show_file_content(self, file_info_url):
+
+        self.file_url_reponse = requests.get(file_info_url)
+        self.file_url_content = self.file_url_reponse.json()
+
+        file_content_details = dict()
+        file_content_details["file_name"] = self.file_url_content.get("name")
+        file_content_details["path"] = self.file_url_content.get("path")
+        file_content_details["sha"] = self.file_url_content.get("sha")
+        file_content_details["size"] = self.file_url_content.get("size")
+        file_content_details["url"] = self.file_url_content.get("url")
+        file_content_details["html_url"] = self.file_url_content.get("html_url")
+        file_content_details["git_url"] = self.file_url_content.get("git_url")
+        file_content_details["download_url"] = self.file_url_content.get("download_url")
+        file_content_details["type"] = self.file_url_content.get("type")
+        file_content_details["encoding"] = self.file_url_content.get("encoding")
+
+        return  file_content_details
